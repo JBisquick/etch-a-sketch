@@ -5,10 +5,12 @@
 .box {
   width: 25px;
   height: 25px;
+  flex: auto;
   border: 1px solid black;
 }
 
 #grid {
   display: flex;
   flex-direction: column;
+  width: 1000px;
 }
