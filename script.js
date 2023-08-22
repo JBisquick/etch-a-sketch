@@ -13,4 +13,16 @@ function getGrid(gridDimension) {
   }
 };
 
+function getBlack(gridBox) {
+  gridBox.style.backgroundColor = 'black';
+};
+
 getGrid(16);
+
+const boxes = document.querySelectorAll('.box')
+
+boxes.forEach((box) => {
+  box.addEventListener('mouseover', () => {
+    getBlack(box);
+  });
+});
