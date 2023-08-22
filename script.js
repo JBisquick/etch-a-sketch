@@ -5,21 +5,22 @@ let rows = document.querySelectorAll('.row');
 let boxes = document.querySelectorAll('.box');
 
 sliderValue.textContent = slider.value;
-
 getGrid(16);
 
 slider.oninput = function() {
   sliderValue.textContent = this.value;
 };
 
+
+
 function getGrid(gridDimension) {
   deleteGrid();
 
-  for(let i = 0; i <= gridDimension; i++) {
+  for(let i = 0; i < gridDimension; i++) {
     let row = document.createElement('div');
     row.classList.add('row');
     grid.appendChild(row);
-    for(let j = 0; j <= gridDimension; j++) {
+    for(let j = 0; j < gridDimension; j++) {
       let box = document.createElement('div');
       box.classList.add('box');
       row.appendChild(box);
@@ -31,6 +32,12 @@ function getGrid(gridDimension) {
 function grabGrid() {
   boxes = document.querySelectorAll('.box');
   rows = document.querySelectorAll('.row');
+  
+  boxes.forEach((box) => {
+    box.addEventListener('mouseover', () => {
+      getBlack(box);
+    });
+  });
 }
 
 function deleteGrid() {
@@ -46,12 +53,9 @@ function deleteGrid() {
   }
 };
 
+
+
 function getBlack(gridBox) {
   gridBox.style.backgroundColor = 'black';
 };
 
-boxes.forEach((box) => {
-  box.addEventListener('mouseover', () => {
-    getBlack(box);
-  });
-});
