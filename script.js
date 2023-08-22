@@ -32,7 +32,7 @@ function getGrid(gridDimension) {
 function grabGrid() {
   boxes = document.querySelectorAll('.box');
   rows = document.querySelectorAll('.row');
-  
+
   boxes.forEach((box) => {
     box.addEventListener('mouseover', () => {
       getBlack(box);
