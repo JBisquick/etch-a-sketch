@@ -1,6 +1,7 @@
 const grid = document.querySelector('#grid');
 const slider = document.querySelector('#slider');
 const sliderValue = document.querySelector('#slider-value');
+const colorButtons = document.querySelectorAll('.buttons')
 let rows = document.querySelectorAll('.row');
 let boxes = document.querySelectorAll('.box');
 let color = 'rainbow'
@@ -11,8 +12,6 @@ getGrid(16);
 slider.oninput = function() {
   sliderValue.textContent = this.value;
 };
-
-
 
 function getGrid(gridDimension) {
   deleteGrid();
@@ -74,10 +73,20 @@ function getRGBValue() {
 
 function getRainbow(gridBox) {
   gridBox.style.backgroundColor = `rgb(${getRGBValue()}, ${getRGBValue()}, ${getRGBValue()})`;
-  console.log(getRGBValue())
 }
 
 function getBlack(gridBox) {
   gridBox.style.backgroundColor = 'black';
 };
 
+colorButtons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    if (e.target.id === 'rainbow') {
+      color = 'rainbow';
+      changeColor();
+    } else {
+      color = 'black'
+      changeColor();
+    }
+  });
+});

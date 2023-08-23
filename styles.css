@@ -8,8 +8,21 @@
   aspect-ratio: 1;
 }
 
+.buttons {
+  padding: 25px;
+  border: 1px solid black;
+}
+
+.buttons:hover {
+  background-color: pink;
+}
+
 #grid {
   display: flex;
   flex-direction: column;
   width: 600px;
+}
+
+#color-options {
+  display: flex;
 }
