@@ -3,6 +3,7 @@ const slider = document.querySelector('#slider');
 const sliderValue = document.querySelector('#slider-value');
 let rows = document.querySelectorAll('.row');
 let boxes = document.querySelectorAll('.box');
+let color = 'rainbow'
 
 sliderValue.textContent = slider.value;
 getGrid(16);
@@ -27,18 +28,13 @@ function getGrid(gridDimension) {
     }
   }
   grabGrid();
+  changeColor();
 };
 
 function grabGrid() {
   boxes = document.querySelectorAll('.box');
   rows = document.querySelectorAll('.row');
-
-  boxes.forEach((box) => {
-    box.addEventListener('mouseover', () => {
-      getBlack(box);
-    });
-  });
-}
+};
 
 function deleteGrid() {
   // Only deleting the grid if the grid has been grabbed
@@ -53,7 +49,33 @@ function deleteGrid() {
   }
 };
 
+function changeColor() {
+  switch (color) {
+    case 'black':
+      boxes.forEach((box) => {
+        box.addEventListener('mouseover', () => {
+          getBlack(box);
+        });
+      });
+      break;
+    case 'rainbow':
+      boxes.forEach((box) => {
+        box.addEventListener('mouseover', () => {
+          getRainbow(box);
+        });
+      });
+      break;
+  }
+};
 
+function getRGBValue() {
+  return Math.floor(Math.random() * 256);
+};
+
+function getRainbow(gridBox) {
+  gridBox.style.backgroundColor = `rgb(${getRGBValue()}, ${getRGBValue()}, ${getRGBValue()})`;
+  console.log(getRGBValue())
+}
 
 function getBlack(gridBox) {
   gridBox.style.backgroundColor = 'black';
