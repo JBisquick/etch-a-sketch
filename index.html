@@ -9,17 +9,26 @@
   <title>Etch-a-Sketch</title>
 </head>
 <body>
-  <div id="grid"></div>
-  <div id="slider-container">
-    <input type="range" min="1" max="64" value="16" 
-    id="slider" onchange="getGrid(this.value)">
-    <output id=slider-value></output>
-  </div>
-  <div id="color-options">
-    <div class="buttons" id="black">Black</div>
-    <div class="buttons" id="rainbow">Rainbow</div>
-    <div class="buttons" id="shading">Shading</div>
-    <div class="buttons" id="clear">Clear</div>
-  </div>
+  <div id="container">
+    <div id="grid"></div>
+    <div id="slider-container">
+      <input type="range" min="1" max="64" value="16" 
+      id="slider" onchange="getGrid(this.value)">
+      <output id=slider-value></output>
+    <div id="option-container">
+      <div class="knob"></div>
+      <div id="color-options">
+        <div class="buttons non-pick" id="black">Black</div>
+        <div class="buttons non-pick" id="rainbow">Rainbow</div>
+        <div class="buttons non-pick" id="shading">Shading</div>
+        <div class="buttons non-pick" id="eraser">Eraser</div>
+        <div class="buttons non-pick" id="clear">Clear</div>
+        <div id="pick-color-container">
+          <input id="pick-color" type="color" class='buttons'>
+        </div>
+      </div>
+      <div class="knob"></div>
+    </div>
+  </div> 
 </body>
 </html>

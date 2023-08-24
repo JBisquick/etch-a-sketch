@@ -1,28 +1,102 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  background-color: #BA8E4A;
+}
+
 .row {
   display: flex;
 }
 
 .box {  
   flex: auto;
-  border: 0.5px solid rgba(0, 0, 0, 0.25);
+  border: 0.25px solid rgba(0, 0, 0, 0.05);
   aspect-ratio: 1;
 }
 
-.buttons {
-  padding: 25px;
-  border: 1px solid black;
+.non-pick {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: silver;
 }
 
-.buttons:hover {
-  background-color: pink;
+.non-pick:hover {
+  background-color: yellow;
+  cursor: pointer;
+}
+
+.knob {
+  height: 100px;
+  width: 100px;
+  background-color: beige;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 #grid {
   display: flex;
   flex-direction: column;
   width: 600px;
+  background-color: rgb(147, 158, 147);
 }
 
 #color-options {
   display: flex;
+  gap: 10px;
+  align-items: center;
 }
+
+#option-container {
+  display: flex;
+  gap: 30px;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 75px 25px 25px;
+  border-radius: 30px;
+  background-color: rgb(227, 25, 25);
+}
+
+#slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0 0;
+}
+
+#slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 15px;
+  width: 300px;
+  border-radius: 5px; 
+  background-color: beige;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transform: opacity 0.2s;
+}
+
+#slider:hover {
+  opacity: 1;
+}
+
+#slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background-color: #04AA6D;
+  cursor: pointer;
+}
+
+#slider-value {
+  color: beige;
+}
+

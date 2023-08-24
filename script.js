@@ -1,4 +1,5 @@
 const grid = document.querySelector('#grid');
+const pickColor = document.querySelector('#pick-color');
 const slider = document.querySelector('#slider');
 const sliderValue = document.querySelector('#slider-value');
 const buttons = document.querySelectorAll('.buttons')
@@ -45,6 +46,12 @@ function grabGrid() {
         case 'shading':
           getDarker(box);
           break;
+        case 'eraser':
+          getEraser(box);
+          break;
+        case 'pick-color':
+          getPickedColor(box);
+          break;
       }
     });
   });
@@ -72,7 +79,15 @@ function getRainbow(gridBox) {
 };
 
 function getBlack(gridBox) {
-  gridBox.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+  gridBox.style.backgroundColor = 'rgb(0, 0, 0)';
+};
+
+function getEraser(gridBox) {
+  gridBox.style.backgroundColor = 'rgb(147, 158, 147)';
+};
+
+function getPickedColor(gridBox) {
+  gridBox.style.backgroundColor = pickColor.value;
 };
 
 function getDarker(gridBox) {
@@ -120,6 +135,10 @@ buttons.forEach((button) => {
       color = 'shading';
     } else if (e.target.id === 'clear') {
       getGrid(slider.value);
+    } else if (e.target.id === 'eraser') {
+      color = 'eraser'
+    } else if (e.target.id === 'pick-color') {
+      color = 'pick-color'
     } else {
       color = 'black';
     }
