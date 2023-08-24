@@ -1,7 +1,7 @@
 const grid = document.querySelector('#grid');
 const slider = document.querySelector('#slider');
 const sliderValue = document.querySelector('#slider-value');
-const colorButtons = document.querySelectorAll('.buttons')
+const buttons = document.querySelectorAll('.buttons')
 let rows = document.querySelectorAll('.row');
 let boxes = document.querySelectorAll('.box');
 let color = 'black'
@@ -112,14 +112,16 @@ function getDarker(gridBox) {
   }
 };
 
-colorButtons.forEach((button) => {
+buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
     if (e.target.id === 'rainbow') {
       color = 'rainbow';
     } else if (e.target.id === 'shading') {
       color = 'shading';
+    } else if (e.target.id === 'clear') {
+      getGrid(slider.value);
     } else {
-      color = 'black'
+      color = 'black';
     }
   });
 });
