@@ -5,7 +5,7 @@ const sliderValue = document.querySelector('#slider-value');
 const buttons = document.querySelectorAll('.buttons')
 let rows = document.querySelectorAll('.row');
 let boxes = document.querySelectorAll('.box');
-let color = 'black'
+let color = 'black';
 
 sliderValue.textContent = slider.value;
 getGrid(16);
@@ -136,9 +136,9 @@ buttons.forEach((button) => {
     } else if (e.target.id === 'clear') {
       getGrid(slider.value);
     } else if (e.target.id === 'eraser') {
-      color = 'eraser'
+      color = 'eraser';
     } else if (e.target.id === 'pick-color') {
-      color = 'pick-color'
+      color = 'pick-color';
     } else {
       color = 'black';
     }
