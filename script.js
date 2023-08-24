@@ -4,7 +4,7 @@ const sliderValue = document.querySelector('#slider-value');
 const colorButtons = document.querySelectorAll('.buttons')
 let rows = document.querySelectorAll('.row');
 let boxes = document.querySelectorAll('.box');
-let color = 'rainbow'
+let color = 'black'
 
 sliderValue.textContent = slider.value;
 getGrid(16);
@@ -27,12 +27,27 @@ function getGrid(gridDimension) {
     }
   }
   grabGrid();
-  changeColor();
 };
 
 function grabGrid() {
   boxes = document.querySelectorAll('.box');
   rows = document.querySelectorAll('.row');
+
+  boxes.forEach((box) => {
+    box.addEventListener('mouseover', () => {
+      switch (color) {
+        case 'black':
+          getBlack(box)
+          break;
+        case 'rainbow':
+          getRainbow(box);
+          break;
+        case 'shading':
+          getDarker(box);
+          break;
+      }
+    });
+  });
 };
 
 function deleteGrid() {
@@ -48,45 +63,63 @@ function deleteGrid() {
   }
 };
 
-function changeColor() {
-  switch (color) {
-    case 'black':
-      boxes.forEach((box) => {
-        box.addEventListener('mouseover', () => {
-          getBlack(box);
-        });
-      });
-      break;
-    case 'rainbow':
-      boxes.forEach((box) => {
-        box.addEventListener('mouseover', () => {
-          getRainbow(box);
-        });
-      });
-      break;
-  }
-};
-
 function getRGBValue() {
   return Math.floor(Math.random() * 256);
 };
 
 function getRainbow(gridBox) {
   gridBox.style.backgroundColor = `rgb(${getRGBValue()}, ${getRGBValue()}, ${getRGBValue()})`;
-}
+};
 
 function getBlack(gridBox) {
-  gridBox.style.backgroundColor = 'black';
+  gridBox.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+};
+
+function getDarker(gridBox) {
+  switch (gridBox.style.backgroundColor) {
+    case 'rgba(0, 0, 0, 0.1)':
+      gridBox.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+      break;
+    case 'rgba(0, 0, 0, 0.2)':
+      gridBox.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+      break;
+    case 'rgba(0, 0, 0, 0.3)':
+      gridBox.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
+      break;
+    case 'rgba(0, 0, 0, 0.4)':
+      gridBox.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+      break;
+    case 'rgba(0, 0, 0, 0.5)':
+      gridBox.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+      break;
+    case 'rgba(0, 0, 0, 0.6)':
+      gridBox.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+      break;
+    case 'rgba(0, 0, 0, 0.7)':
+      gridBox.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+      break;
+    case 'rgba(0, 0, 0, 0.8)':
+      gridBox.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+      break;
+    case 'rgba(0, 0, 0, 0.9)':
+      gridBox.style.backgroundColor = 'rgb(0, 0, 0)';
+      break;
+    case 'rgb(0, 0, 0)':
+      break;
+    default:
+      gridBox.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+      break;
+  }
 };
 
 colorButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     if (e.target.id === 'rainbow') {
       color = 'rainbow';
-      changeColor();
+    } else if (e.target.id === 'shading') {
+      color = 'shading';
     } else {
       color = 'black'
-      changeColor();
     }
   });
 });
